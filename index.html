@@ -12,13 +12,14 @@
   <div class="container">
     <h1 class="Titulo">Lista De Tarefas</h1>
     <div class="new-task">
-      <input type="text" name="lista_Tarefa" id="lista_Tarefa" placeholder="Adicionar Nova tarefa">
-      <div class="butoes">
+      <input type="text" name="lista_Tarefa" id="lista_Tarefa" placeholder="Adicionar Nova tarefa...">
+      <div class="botoes">
       <select name="importancia" id="importancia">
         <option value="alta">Alta</option>
         <option value="media">Média</option>
         <option value="baixa">Baixa</option>
       </select>
+     
       <button id="button"type="button">Adicionar</button>
    </div>
     </div>
@@ -30,11 +31,19 @@
       <span class="baixa_span">Baixa</span>
       </div>
     </div>
-   
+    <div class="filtro">
+<input type="text" id="buscar_tarefa" placeholder="Buscar tarefa...">
+    <select id="filtro_prioridade">
+  <option value="todas">Todas</option>
+  <option value="alta">Alta</option>
+  <option value="media">Média</option>
+  <option value="baixa">Baixa</option>
+</select>
+</div>
     <h2>Pendentes</h2>
     <ul class="task_lista" id="task_pendente"></ul>
 
-    <h2>Conluídas</h2>
+    <h2>Concluídas</h2>
     <ul class="task_lista" id="task_concluida"></ul>
 
   </div>
