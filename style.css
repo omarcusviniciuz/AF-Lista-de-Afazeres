@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 750px;
+}
+
+.container {
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    gap: 20px;
+
+}
+
+.new-task {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    padding: 40px;
+
+
+}
+
+#lista_Tarefa {
+    font-size: 15px;
+    padding: 10px 10px;
+    text-align: start;
+    border: 1px solid black;
+    border-radius: 5px;
+
+
+}
+
+span {}
+
+.alta_span {
+    background-color: #ff4d4d;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.media_span {
+    background-color: #fcb708;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.baixa_span {
+    background-color: hsl(109, 81%, 56%);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.prioridade {
+    text-align: start;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px black solid;
+    width: 50%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alinhar-span {
+    padding-top: 20px;
+    display: flex;
+    gap: 20px;
+    ;
+}
+
+#importancia {
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 10px 10px;
+    text-align: start;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+
+#button {
+    margin-left: 5px;
+    font-size: 15px;
+    padding: 10px 5px;
+    text-align: start;
+    border: none;
+    border-radius: 5px;
+}
+
+
+li{
+ display: flex;
+    
+ justify-content: space-between;
+   padding: 15px;
+   align-items: center;
+   border-radius:10px ;
+    margin-bottom: 12px;
+      border: 1px solid #ccc;
+}
+
+
+
+ul{
+
+    width: 80%;
+}
+
+.info {
+    
+    padding-right: 20px;
+    
+}
+.actions {
+    display: flex;
+    
+    gap: 20px;
+}
+.button-confirmar{
+ 
+    font-size: 10px;
+    padding: 10px 10px;
+    border-radius: 5px;
+      background-color: rgba(214, 18, 18, 0.2); 
+border:  none;
+    color: black;
+}
+
+.button-excluir{
+  
+    font-size: 10px;
+    padding: 10px 10px;
+   border-radius: 5px;
+    background-color: rgba(214, 18, 18, 0.2); 
+     border:  none;
+        color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+.task-item.alta {
+    background-color: #ff4d4d;
+    /* vermelho */
+    color: #fff;
+}
+
+.task-item.media {
+    background-color: #f4a722;
+    /* vermelho */
+    color: #fff;
+}
+
+.task-item.baixa {
+    background-color: #6ff61b;
+    /* vermelho */
+    color: #fff;
+}
