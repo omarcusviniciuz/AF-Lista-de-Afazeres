@@ -5,47 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Tarefas Interativa</title>
+  <link rel="stylesheet" href="global-Style.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="container">
-    <h1 class="Titulo">Lista De Tarefas</h1>
-    <div class="new-task">
-      <input type="text" name="lista_Tarefa" id="lista_Tarefa" placeholder="Adicionar Nova tarefa...">
+    <h1 class="titulo">Lista de Tarefas</h1>
+    <div class="nova-tarefa">
+      <input type="text" name="lista_Tarefa" id="lista_Tarefa" placeholder="Adicionar nova tarefa...">
       <div class="botoes">
-      <select name="importancia" id="importancia">
-        <option value="alta">Alta</option>
-        <option value="media">Média</option>
-        <option value="baixa">Baixa</option>
-      </select>
-     
-      <button id="button"type="button">Adicionar</button>
-   </div>
+        <select name="importancia" id="importancia">
+          <option value="alta">Alta</option>
+          <option value="media">Média</option>
+          <option value="baixa">Baixa</option>
+        </select>
+        <button id="button" type="button">Adicionar</button>
+      </div>
     </div>
     <div class="prioridade">
       <h3>Legenda das Prioridades</h3>
       <div class="alinhar-span">
-      <span class="alta_span">Alta</span>
-      <span class="media_span">Média</span>
-      <span class="baixa_span">Baixa</span>
+        <span class="alta_span">Alta</span>
+        <span class="media_span">Média</span>
+        <span class="baixa_span">Baixa</span>
       </div>
     </div>
     <div class="filtro">
-<input type="text" id="buscar_tarefa" placeholder="Buscar tarefa...">
-    <select id="filtro_prioridade">
-  <option value="todas">Todas</option>
-  <option value="alta">Alta</option>
-  <option value="media">Média</option>
-  <option value="baixa">Baixa</option>
-</select>
-</div>
+      <input type="text" id="buscar_tarefa" placeholder="Buscar tarefa...">
+      <label for="filtro_prioridade" style="display:none;">Filtrar por prioridade</label>
+      <select id="filtro_prioridade">
+        <option value="todas">Filtrar</option>
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
+    </div>
     <h2>Pendentes</h2>
     <ul class="task_lista" id="task_pendente"></ul>
 
     <h2>Concluídas</h2>
     <ul class="task_lista" id="task_concluida"></ul>
-
   </div>
   <script src="script.js"></script>
 </body>

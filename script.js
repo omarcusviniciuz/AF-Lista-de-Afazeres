@@ -1,56 +1,99 @@
-document.getElementById("button").addEventListener('click', function () {
-  const taksName = document.getElementById("lista_Tarefa").value.trim();
-  const priority = document.getElementById("importancia").value;
+let tarefasArray = [];
 
-  if (!taksName) {
-    alert('Prencha o nome da tarefa!');
-    document.getElementById("lista_Tarefa").focus()
+// Função para salvar tarefas no localStorage
+function salvarTarefas() {
+  localStorage.setItem("tarefas", JSON.stringify(tarefasArray));
+}
+
+// Função para renderizar tarefas na tela
+function renderizarTarefas() {
+  document.getElementById('task_pendente').innerHTML = '';
+  document.getElementById('task_concluida').innerHTML = '';
+
+  tarefasArray.forEach((tarefa) => {
+    const itemTarefa = document.createElement("li");
+    itemTarefa.classList.add('task-item', tarefa.prioridade);
+    if (tarefa.concluida) itemTarefa.classList.add('completed');
+
+    const divInfo = document.createElement("div");
+    divInfo.classList.add('info');
+
+    const divTexto = document.createElement('div');
+    divTexto.classList.add('texto');
+    divTexto.innerText = tarefa.nome;
+
+    const divAcoes = document.createElement('div');
+    divAcoes.classList.add('acoes');
+
+    if (!tarefa.concluida) {
+      const botaoConcluir = document.createElement('button');
+      botaoConcluir.classList.add('button-confirmar');
+      botaoConcluir.innerText = 'Concluir';
+      botaoConcluir.onclick = () => {
+        tarefa.concluida = true;
+        tarefa.dataConclusao = new Date().toLocaleString();
+        salvarTarefas();
+        renderizarTarefas();
+      };
+      divAcoes.appendChild(botaoConcluir);
+    } else {
+      const data = document.createElement('span');
+      data.classList.add('data-termino');
+      data.style.fontSize = '0.8em';
+      data.innerText = `Concluída em ${tarefa.dataConclusao}`;
+      divAcoes.appendChild(data);
+    }
+
+    const botaoExcluir = document.createElement('button');
+    botaoExcluir.classList.add('button-excluir');
+    botaoExcluir.innerText = 'Excluir';
+    botaoExcluir.onclick = () => {
+      tarefasArray = tarefasArray.filter((t) => t !== tarefa);
+      salvarTarefas();
+      renderizarTarefas();
+    };
+
+    divAcoes.appendChild(botaoExcluir);
+    divInfo.appendChild(divTexto);
+    divInfo.appendChild(divAcoes);
+    itemTarefa.appendChild(divInfo);
+
+    if (tarefa.concluida) {
+      document.getElementById('task_concluida').appendChild(itemTarefa);
+    } else {
+      document.getElementById('task_pendente').appendChild(itemTarefa);
+    }
+  });
+}
+
+// Evento para adicionar nova tarefa
+document.getElementById("button").addEventListener('click', function () {
+  const nomeTarefa = document.getElementById("lista_Tarefa").value.trim();
+  const prioridade = document.getElementById("importancia").value;
+
+  if (!nomeTarefa) {
+    alert('Preencha o nome da tarefa!');
+    document.getElementById("lista_Tarefa").focus();
     return;
   }
 
-  const taskItem = document.createElement("li");
-  taskItem.classList.add('task-item', priority);
+  const novaTarefa = {
+    nome: nomeTarefa,
+    prioridade: prioridade,
+    concluida: false,
+    dataConclusao: null
+  };
 
-  // Cria a div info (flex container)
-  const infoDiv = document.createElement("div");
-  infoDiv.classList.add('info');
+  tarefasArray.push(novaTarefa);
+  salvarTarefas();
+  renderizarTarefas();
 
-  // Texto da tarefa à esquerda
-  const textoDiv = document.createElement('div');
-  textoDiv.classList.add('texto');
-  textoDiv.innerText = taksName;
+  document.getElementById('lista_Tarefa').value = '';
+  document.getElementById('importancia').value = 'alta';
+});
 
-  // Ações à direita
-  const acoesDiv = document.createElement('div');
-  acoesDiv.classList.add('acoes');
-
-  // Botão concluir
-  const completeButton = document.createElement('button');
-  completeButton.classList.add('button-confirmar');
-  completeButton.innerText = 'Concluir';
-
-  // Botão excluir
-  const deleteButton = document.createElement('button');
-  deleteButton.classList.add('button-excluir');
-  deleteButton.innerText = 'Excluir';
-
-  deleteButton.onclick = () => taskItem.remove();
-
-  completeButton.onclick = () => {
-    taskItem.classList.add('completed');
-    completeButton.remove();
-
-    // Data de conclusão à direita
-    const time = document.createElement('span');
-    time.classList.add('data-termino');
-    time.style.fontSize = '0.8em';
-    time.innerText = `Concluída em ${new Date().toLocaleString()}`;
-    acoesDiv.appendChild(time);
-
-    document.getElementById('task_concluida').appendChild(taskItem);
-  }
-
-  document.getElementById("filtro_prioridade").addEventListener("change", function () {
+// Filtro por prioridade nas concluídas
+document.getElementById("filtro_prioridade").addEventListener("change", function () {
   const valorFiltro = this.value;
   const tarefas = document.querySelectorAll("#task_concluida li");
 
@@ -61,19 +104,25 @@ document.getElementById("button").addEventListener('click', function () {
       tarefa.style.display = "none";
     }
   });
-  document.getElementById("buscar_tarefa").addEventListener("input", function () {
+});
+
+// Busca por texto nas pendentes e concluídas
+document.getElementById("buscar_tarefa").addEventListener("input", function () {
   const termo = this.value.toLowerCase();
-  const tarefas = document.querySelectorAll("#task_pendente li");
 
-  tarefas.forEach((tarefa) => {
-    const texto = tarefa.querySelector(".texto").innerText.toLowerCase();
-    tarefa.style.display = texto.includes(termo) ? "flex" : "none";
-    // Salvar no localStorage
-function salvarTarefas() {
-  localStorage.setItem("tarefas", JSON.stringify(tarefasArray));
-}
+  const filtrar = (seletor) => {
+    const tarefas = document.querySelectorAll(seletor);
+    tarefas.forEach((tarefa) => {
+      const texto = tarefa.querySelector(".texto").innerText.toLowerCase();
+      tarefa.style.display = texto.includes(termo) ? "flex" : "none";
+    });
+  };
 
-// Carregar ao iniciar
+  filtrar("#task_pendente li");
+  filtrar("#task_concluida li");
+});
+
+// Carregar tarefas do localStorage ao iniciar
 window.onload = function () {
   const salvas = JSON.parse(localStorage.getItem("tarefas"));
   if (salvas) {
@@ -81,23 +130,3 @@ window.onload = function () {
     renderizarTarefas();
   }
 };
-  });
-});
- });
-  // Monta as ações
-  acoesDiv.appendChild(completeButton);
-  acoesDiv.appendChild(deleteButton);
-
-  // Monta a estrutura info
-  infoDiv.appendChild(textoDiv);
-  infoDiv.appendChild(acoesDiv);
-
-  // Adiciona infoDiv ao item da lista
-  taskItem.appendChild(infoDiv);
-
-  document.getElementById('task_pendente').appendChild(taskItem);
-
-  document.getElementById('lista_Tarefa').value = '';
-  document.getElementById('importancia').value = 'alta';
-  
-});

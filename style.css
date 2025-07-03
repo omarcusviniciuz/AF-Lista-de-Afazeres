@@ -5,51 +5,83 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100;
+  background-color: var(--bg-main);
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text-primary);
+  padding: 30px;
 }
 
 .container {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-light);
+  max-width: 800px;
+  min-height: 800px;
+  margin: 0 auto;
+}
+
+.titulo {
   text-align: center;
+}
+
+.nova-tarefa {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#lista_Tarefa,
+#importancia,
+#button,
+#buscar_tarefa,
+#filtro_prioridade {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+#button {
+  background-color: var(--priority-low);
+  color: white;
+  border: none;
+}
+
+#button:hover {
+  background-color: #0d9c6c;
+}
+
+li {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 8px solid transparent;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
   justify-content: space-between;
-  padding-top: 20px;
-  gap: 20px;
+  align-items: center;
+  box-shadow: var(--shadow-light);
+  transition: 0.3s;
 }
-
-.new-task {
-  display: flex;
-  width: 30%;
-  padding: 40px;
- 
-}
-
-#lista_Tarefa {
-  font-size: 15px;
-  padding: 10px 10px;
-  text-align: start;
-  border: 1px solid black;
-  border-radius: 5px;
-  
-}
-
 
 .alta_span {
-  background-color: #ff4d4d;
+  background-color: var(--priority-high);
   padding: 10px 20px;
   border-radius: 5px;
 }
 
 .media_span {
-  background-color: #fcb708;
+  background-color: var(--priority-medium);
   padding: 10px 20px;
   border-radius: 5px;
 }
 
 .baixa_span {
-  background-color: hsl(109, 81%, 56%);
+  background-color: var(--priority-low);
   padding: 10px 20px;
   border-radius: 5px;
 }
@@ -62,67 +94,51 @@ body {
   height: 100px;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+}
+
+.filtro {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.button-confirmar,
+.button-excluir {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.button-confirmar {
+  background-color: var(--priority-low);
+}
+
+.button-confirmar:hover {
+  background-color: #0f766e;
+}
+
+.button-excluir {
+  background-color: var(--priority-high);
+}
+
+.button-excluir:hover {
+  background-color: #b91c1c;
 }
 
 .alinhar-span {
   padding-top: 20px;
   display: flex;
   gap: 20px;
-}
-
-#importancia {
-  margin-left: 10px;
-  font-size: 15px;
-  padding: 10px 10px;
-  text-align: start;
- border: 1px solid black; 
-  border-radius: 5px;
-}
-
-#filtro_prioridade{
-     
-  font-size: 15px;
-  padding: 10px 10px;
-  text-align: start;
- border: 1px solid black; 
-  border-radius: 5px;
-}
-#buscar_tarefa{  
-      font-size: 15px;
-  padding: 10px 10px;
-  text-align: start;
- border: 1px solid black; 
-  border-radius: 5px;
-}
-
-#button {
-  margin-left: 5px;
-  font-size: 15px;
-  padding: 10px 15px;
-  text-align: start;
-  border: none;
-  border-radius: 5px;
-}
-.botoes{
-    display: flex;
-    
-
-}
-
-li {
-  display: flex;
-  width: 63%;
-  justify-content: space-between;
-  padding: 15px;
-  align-items: center;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-}
-
-ul {
-  width: 65%;
-  
 }
 
 .info {
@@ -133,8 +149,8 @@ ul {
 }
 
 .texto {
- flex-grow: 1;
- text-align: left;
+  flex-grow: 1;
+  text-align: left;
 }
 
 .acoes {
@@ -146,56 +162,44 @@ ul {
 
 .data-termino {
   margin-left: 8px;
-
   font-weight: bold;
-}
-.button-confirmar {
-  font-size: 12px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  background-color: #28a745;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.button-confirmar:hover {
-  background-color: #218838;
-}
-
-.button-excluir {
-  font-size: 12px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  background-color: #dc3545;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.button-excluir:hover {
-  background-color: #c82333;
 }
 
 .task-item.alta {
   background-color: #ffe5e5;
   border-left: 6px solid #ff4d4d;
 }
+
 .task-item.media {
   background-color: #fff8e1;
   border-left: 6px solid #fcb708;
 }
+
 .task-item.baixa {
   background-color: #e6ffe5;
   border-left: 6px solid hsl(109, 81%, 56%);
 }
 
+.completed {
+  opacity: 0.7;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 100px;
+}
+
 @media (max-width: 768px) {
-  .new-task {
+  .nova-tarefa {
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 90%;
+  }
+
+  .filtro {
+    flex-direction: column;
+    margin-top: 0;
   }
 
   .botoes {
@@ -205,26 +209,16 @@ ul {
     margin-top: 10px;
   }
 
-  #lista_Tarefa {
-    width: 100%;
-    
+  h2 {
+    margin-top: 50px;
   }
 
-  #button, #importancia {
-    width: 100%;
+  .button-confirmar,
+  .button-excluir {
+    font-size: 10px;
   }
 
-  ul {
-    width: 95%;
-    
+  .alinhar-span {
+    font-size: 10px;
   }
-  li{
-    width: 95%;
-  }
-  #button {
-text-align: center;
-}
-.prioridade {
-  
-}
 }

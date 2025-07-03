@@ -1,0 +1,13 @@
+:root {
+  --bg-main: #f0f4f8;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+
+  --priority-high: #ef4444;
+  --priority-medium: #f59e0b;
+  --priority-low: #10b981;
+
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
