@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 - Estrutura HTML Fundamental:
+Crie a base do HTML, organizando as seções para adicionar tarefas, legenda, tarefas pendentes e concluídas.
+Inclua os elementos de input para nome e prioridade, o botão de adição e as divisões para as listas de tarefas. OK
+
+2 - Adição de Tarefas com Lógica:
+Implemente a função JavaScript para adicionar novas tarefas.
+Crie dinamicamente um novo elemento <li> com o conteúdo da tarefa e adicione-o à seção de tarefas pendentes.
+Defina a cor de fundo da tarefa de acordo com a prioridade selecionada.
+Importante: Valide se o campo da tarefa está preenchido antes de adicionar! OK
+
+3 - Exclusão de Tarefas Simplificada:
+Desenvolva a função para remover tarefas da seção de pendentes.
+Ao clicar em "excluir", a tarefa deve ser removida da lista. OK
+
+4 - Conclusão de Tarefas Inteligente:
+Implemente a função para marcar tarefas como concluídas.
+Ao clicar em "marcar como concluída", a tarefa deve ser movida para a seção de concluídas.
+Capture e exiba a data e hora exatas da conclusão. OK
+
+5 - Estilização Avançada com CSS:
+Crie seu arquivo CSS para estilizar as tarefas e seções.
+Utilize classes CSS para aplicar estilos específicos a cada elemento (tarefas, seções, botões, etc.).
+Certifique-se de que o JavaScript adicione e remova classes conforme necessário para as alterações visuais. OK
+ 
+6 - Testes:
+Teste exaustivamente todas as funcionalidades para garantir que a adição, exclusão e marcação de tarefas funcionem perfeitamente.
+Verifique se a estilização e a personalização visual estão impecáveis. OK
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Extra - Próximos Passos (Considerações Adicionais para um Projeto Estelar!):
+Se você quiser levar este projeto para o próximo nível, explore a implementação de recursos como:
+
+Filtros de Visualização: Organize as tarefas por prioridade ou data. OK
+
+Busca por Tarefas: Encontre rapidamente tarefas específicas. OK
+
+Persistência de Dados Local: Armazene as tarefas no localStorage. OK
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
